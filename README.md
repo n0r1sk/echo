@@ -1,11 +1,17 @@
 # n0r1sk echo
 
-"echo.py" is a python3 based script which starts a threaded tcp/udp-server to display informations about itself (hostname, interfaces) and about the connecting client (IP, HTTP headers,...).
+"echo.py" is a python3 based script which starts a threaded TCP/UDP-server to display informations about itself (hostname, interfaces) and about the connecting client (IP, HTTP headers,...).
 
-We built this docker container for testing of docker swarm, overlay networks and so on.
+We built this Docker container for testing of docker swarm, overlay networks and so on.
 
-## Running the docker container
-### single docker container
+# Why
+In the Docker environment it is often useful to have a simple container which provides a UDP, TCP and HTTP interface that you can pull from a client and that provides some helpful information like the client ip the request originates from. Furthermore if you are dealing with Docker Swarm or internal/external loadbalancers for your service it is often helpful to test your idea with a simple Docker container to check if the correct ip address is reaching your backend service.
+
+# What
+This Docker image is based on Ubuntu:16.04 because we need Python3 to power our echo.py script. We have included some additional but useful tools like netcat, telnet, curl, nslookup and netstat. These are utilities which are helpful if you need to get more information on why something is not working as expected.
+
+## Running the Docker container
+### Single Docker container
 Starting a new container based on the n0r1skcom/echo image on a dynamic port
 ```
 docker run -d -P n0r1skcom/echo
@@ -15,7 +21,7 @@ If you want to specify the exposed port you have to use the following command
 docker run -d -p 22222:3333 -p 22222:3333/udp n0r1sk/echo
 ```
 
-### docker swarm service
+### Docker Swarm service
 At first you have to create a new overlay network if you have no existing overlay network you want to use.
 If you have one, just skip this step.
 ```
