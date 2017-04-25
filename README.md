@@ -2,7 +2,7 @@
 
 "echo.py" is a python3 based script which starts a threaded TCP/UDP-server to display informations about itself (hostname, interfaces) and about the connecting client (IP, HTTP headers,...).
 
-We built this Docker container for testing of docker swarm, overlay networks and so on.
+We built this Docker container for testing of docker swarm, overlay networks, load balancers and so on.
 
 # Why
 In the Docker environment it is often useful to have a simple container which provides a UDP, TCP and HTTP interface that you can pull from a client and that provides some helpful information like the client ip the request originates from. Furthermore if you are dealing with Docker Swarm or internal/external loadbalancers for your service it is often helpful to test your idea with a simple Docker container to check if the correct ip address is reaching your backend service.
