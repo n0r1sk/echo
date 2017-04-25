@@ -56,3 +56,7 @@ Or just use echo (WARNING -> no further output on client -> one way communicatio
 ```
 echo -n "test" > /dev/udp/IP_OF_DOCKER_HOST/PORT_OF_DOCKER_CONTAINER
 ```
+## FAQ
+No questions so far...  :)
+
+If you have any questions please don't hesitate to contact us via github-comment or by mail.
