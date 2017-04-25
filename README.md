@@ -14,23 +14,33 @@ This Docker image is based on Ubuntu:16.04 because we need Python3 to power our 
 ### Single Docker container
 Starting a new container based on the n0r1skcom/echo image on a dynamic port
 ```
-docker run -d -P n0r1skcom/echo```
+docker run -d -P n0r1skcom/echo
+```
 If you want to specify the exposed port you have to use the following command
 ```
-docker run -d -p 22222:3333 -p 22222:3333/udp n0r1sk/echo```
+docker run -d -p 22222:3333 -p 22222:3333/udp n0r1sk/echo
+```
 Result
 ![console output](https://www.n0r1sk.com/wp-content/uploads/2017/04/output.gif "console output")  
 
 ### Docker Swarm service
 At first you have to create a new overlay network if you have no existing overlay network you want to use.
 If you have one, just skip this step.
-```docker network create --driver overlay overlay1```
+```
+docker network create --driver overlay overlay1
+```
 Create a new docker swarm service where 22222 is the port you want to expose the echo service to your network
-```docker service create --name echo --network overlay1 --replicas 2 -p 22222:3333 -p 22222:3333/udp n0r1skcom/echo```
+```
+docker service create --name echo --network overlay1 --replicas 2 -p 22222:3333 -p 22222:3333/udp n0r1skcom/echo
+```
 To see if your service is running
-```docker service ps echo```
+```
+docker service ps echo
+```
 If you want to deploy a newer image of your running docker swarm service
-```docker service update echo --image n0r1skcom/echo:latest```
+```
+docker service update echo --image n0r1skcom/echo:latest
+```
 
 ### Build the docker container on your own
 You can simply build the docker container on your own. You only have to clone this github repository on a docker host and build the docker container via the included "Dockerfile"
@@ -43,14 +53,22 @@ docker build .
 ## Start to use the echo tcp/udp-server
 ### TCP
 You can simply connect to the server via telnet
-```telnet IP_OF_DOCKER_HOST PORT_OF_DOCKER_CONTAINER```
+```
+telnet IP_OF_DOCKER_HOST PORT_OF_DOCKER_CONTAINER
+```
 Or, if you want to see some http headers, just use curl
-```curl --header "X-Forwarded-For: 192.168.0.2" http://IP_OF_DOCKER_HOST:PORT_OF_DOCKER_CONTAINER```
+```
+curl --header "X-Forwarded-For: 192.168.0.2" http://IP_OF_DOCKER_HOST:PORT_OF_DOCKER_CONTAINER
+```
 ### UDP
 For testing udp connections
-```netcat -u IP_OF_DOCKER_HOST PORT_OF_DOCKER_CONTAINER```
+```
+netcat -u IP_OF_DOCKER_HOST PORT_OF_DOCKER_CONTAINER
+```
 Or just use echo (WARNING -> no further output on client -> one way communication)
-```echo -n "test" > /dev/udp/IP_OF_DOCKER_HOST/PORT_OF_DOCKER_CONTAINER```
+```
+echo -n "test" > /dev/udp/IP_OF_DOCKER_HOST/PORT_OF_DOCKER_CONTAINER
+```
 
 ## FAQ
 No questions so far...  :)
