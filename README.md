@@ -20,7 +20,7 @@ If you want to specify the exposed port you have to use the following command
 ```
 docker run -d -p 22222:3333 -p 22222:3333/udp n0r1sk/echo
 ```
-Result
+### Example result
 ![console output](https://www.n0r1sk.com/wp-content/uploads/2017/04/output-small.gif "console output")  
 
 ### Docker Swarm service
