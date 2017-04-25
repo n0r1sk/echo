@@ -16,7 +16,7 @@ If you have one, just skip this step.
 ```
 docker network create --driver overlay overlay1
 ```
-Create a new docker swarm service
+Create a new docker swarm service where 22222 is the port you want to expose the echo service to your network
 ```
 docker service create --name echo --network overlay1 --replicas 2 -p 22222:3333 -p 22222:3333/udp n0r1skcom/echo
 ```
@@ -29,7 +29,15 @@ If you want to deploy a newer image of your running docker swarm service
 docker service update echo --image n0r1skcom/echo:latest
 ```
 
-## Start to use the echo server
+### Build the docker container on your own
+You can simply build the docker container on your own. You only have to clone this github repository on a docker host and build the docker container via the included "Dockerfile"
+```
+git clone https://github.com/n0r1sk/echo.git
+cd echo
+docker build .
+```
+
+## Start to use the echo tcp/udp-server
 ### TCP
 You can simply connect to the server via telnet
 ```
