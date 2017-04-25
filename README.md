@@ -6,8 +6,13 @@ We built this docker container for testing of docker swarm, overlay networks and
 
 ## Running the docker container
 ### single docker container
+Starting a new container based on the n0r1skcom/echo image on a dynamic port
 ```
 docker run -d -P n0r1skcom/echo
+```
+If you want to specify the exposed port you have to use the following command
+```
+docker run -d -p 22222:3333 -p 22222:3333/udp n0r1sk/echo
 ```
 
 ### docker swarm service
