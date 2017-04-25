@@ -13,9 +13,11 @@ This Docker image is based on Ubuntu:16.04 because we need Python3 to power our 
 ## Running the Docker container
 ### Single Docker container
 Starting a new container based on the n0r1skcom/echo image on a dynamic port
-```docker run -d -P n0r1skcom/echo```
+```
+docker run -d -P n0r1skcom/echo```
 If you want to specify the exposed port you have to use the following command
-```docker run -d -p 22222:3333 -p 22222:3333/udp n0r1sk/echo```
+```
+docker run -d -p 22222:3333 -p 22222:3333/udp n0r1sk/echo```
 Result
 ![console output](https://www.n0r1sk.com/wp-content/uploads/2017/04/output.gif "console output")  
 
